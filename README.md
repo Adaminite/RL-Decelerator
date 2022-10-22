@@ -1,55 +1,45 @@
-The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
-
-(__TODO__: your project name)
-
-# Shoppy Shoperson 
+# Rocket League Decelerator
 
 ## Overview
 
-(__TODO__: a brief one or two paragraph, high-level description of your project)
 
-Remembering what to buy at the grocery store is waaaaay too difficult. Also, shopping for groceries when you're hungry leads to regrettable purchases. Sooo... that's where Shoppy Shoperson comes in!
+Ever wanted to derank your Rocket League account? Either to smurf, play with friends, or just to lose? Rocket League Decelerator can handle that for you!
 
-Shoppy Shoperson is a web app that will allow users to keep track of multiple grocery lists. Users can register and login. Once they're logged in, they can create or view their grocery list. For every list that they have, they can add items to the list or cross off items.
-
+Rocket League Decelerator is a web app that will allow users to "hire" our certified (de)boosters to derank your account. Users can register and login. Once they're logged in, they can hire a deranker and/or write reviews for a specific deranker. 
 
 ## Data Model
 
-(__TODO__: a description of your application's data and their relationships to each other) 
+The application will store User, Reviews, and Derankers (the rest TBD)
 
-The application will store Users, Lists and Items
-
-* users can have multiple lists (via references)
-* each list can have multiple items (by embedding)
-
-(__TODO__: sample documents)
+* users can write as many reviews as they want
+* each review consists of a rating, a description, and a deranker
+* derankers will store their basic information and reviews as subdocs 
 
 An Example User:
 
 ```javascript
 {
-  username: "shannonshopper",
-  hash: // a password hash,
-  lists: // an array of references to List documents
+  username: "hehe xd",
+  password: // some sort of password encryption,
+  email: "hehexd123@realemail.com"
 }
 ```
 
-An Example List with Embedded Items:
+An Example Deranker with Review Subdoc (exact structure TBD):
 
 ```javascript
 {
-  user: // a reference to a User object
-  name: "Breakfast foods",
-  items: [
-    { name: "pancakes", quantity: "9876", checked: false},
-    { name: "ramen", quantity: "2", checked: true},
+  name: "John Doe",
+  reviews: [
+    { rating: 5, userId: "_212417", content: "Did a phenomenal job!"}, // userId refers to whow rote review
+    { rating: 3, userId: "_214142", content: "Was a few days late in fulfilling the order"},
   ],
   createdAt: // timestamp
 }
 ```
 
 
-## [Link to Commented First Draft Schema](db.mjs) 
+## [Link to Commented First Draft Schema](./backend/models/User.model.mjs) 
 
 (__TODO__: create a first draft of your Schemas in db.mjs and link to it)
 
