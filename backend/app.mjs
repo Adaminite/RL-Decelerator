@@ -1,6 +1,9 @@
 import express from 'express';
 import path from 'path';
+import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
+
+dotenv.config();
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
