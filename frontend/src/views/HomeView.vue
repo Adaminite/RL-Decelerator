@@ -1,5 +1,11 @@
 <template>
-    <main>
+    <div>
       <h1> Test </h1>
-    </main>
+    </div>
 </template>
+
+<script>
+  export default{
+
+  }
+</script>
