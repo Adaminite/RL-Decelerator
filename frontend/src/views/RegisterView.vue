@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1> Register </h1>
-        <form>
+        <form @submit="">
             <div>
                 <label for="email"> Email Address: </label>
                 <input type="email" name="email" required/>
@@ -15,7 +15,7 @@
             <div>
                 <label for="password"> Password: </label>
                 <input type="text" name="password"/>
-                <input type="checkbox" @click.stop="showPassword()">Show Password
+                <input type="checkbox" @click.stop="showPassword($event)">Show Password
             </div>
 
             <div>
@@ -36,6 +36,11 @@
     export default{
         data(){
             
+        },
+        methods: {
+            showPassword(event){
+
+            }
         }
     }
 </script>
