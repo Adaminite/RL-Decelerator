@@ -1,5 +1,5 @@
 import express from 'express';
-import path, { dirname } from 'path';
+import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 
@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 app.use('/api/users', UserRouter);
 
 app.use(express.static(path.join(__dirname, '/frontend/dist')));
-app.use(express.static(path.join(__dirname,  '/frontend/dist/assets')));
+app.use(express.static(path.join(__dirname, '/frontend/dist/assets')));
 app.get('*', (req, res) => {
     res.sendFile( path.join(__dirname, '/frontend/dist/index.html'));
 }); 

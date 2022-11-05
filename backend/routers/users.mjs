@@ -1,5 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import User from '../models/User.model.mjs';
 
 const router = express.Router();
@@ -26,7 +27,8 @@ router.post('/register', async (req, res) => {
         });
 
         const saved = await newUser.save();
-        res.send(saved);
+        const token = ''; // add token stuff here
+        res.send({...saved});
     } 
     catch(err){
         console.log(err);
