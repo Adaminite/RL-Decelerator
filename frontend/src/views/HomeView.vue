@@ -48,6 +48,7 @@ export default {
           rate: rate
         });
 
+        alert('Go to /boosters/' + res.data.slug + ' to view the saved data in the database');
         if (res.error) {
           throw res.error;
         }

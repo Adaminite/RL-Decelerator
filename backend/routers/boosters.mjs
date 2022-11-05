@@ -40,9 +40,17 @@ router.post('/add', upload.single('image'), async (req, res) => {
     }
 });
 
-router.get('/find', (req, res) => {
-    const params = req.params;
-    res.send(params);
+router.get('/find', async (req, res) => {
+    const query = req.query;
+    const slug = query.slug;
+    try {
+        const result = await Booster.find({ slug });
+        res.send(result);
+    }
+    catch (err) {
+        res.send({ error: err });
+    }
+    
 });
 
 export default router;
