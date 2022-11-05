@@ -38,8 +38,8 @@
             
         },
         methods: {
-            showPassword(event){
-
+            showPassword(event) {
+                
             }
         }
     }

@@ -12,9 +12,9 @@ const userSchema = new Schema({
 });
 
 
-mongoose.model(userSchema);
+mongoose.model('User', userSchema);
 
-const userModel = mongoose.model('User', userSchema);
+const userModel = mongoose.model('User');
 
 
 export default userModel;
