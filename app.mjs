@@ -9,6 +9,11 @@ import BoosterRouter from './backend/routers/boosters.mjs';
 
 dotenv.config();
 
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
