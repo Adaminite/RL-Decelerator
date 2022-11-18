@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import {createStore} from 'vuex';
 import App from './App.vue';
 import router from './router/index.mjs';
+import axios from 'axios';
 
 import './assets/main.css';
 
@@ -18,14 +19,29 @@ const store = createStore({
             state.token = '';
             window.localStorage.removeItem('token');
             window.localStorage.removeItem('username');
+        },
+        login(state, payload) {
+            state.username = payload.username;
+            state.token = payload.token;
         }
     },
     actions:{
         logout(state){
             state.commit('logout');
         },
-        login(state, user){
+        async login(state, user) {
+            console.log(user);
 
+            const res = await axios.post('/api/users/register', user);
+
+            console.log(res);
+
+            if (res.error) {
+                throw res.error;
+            }
+            
+            state.commit('login', res.data);
+            
         }
     }
 
