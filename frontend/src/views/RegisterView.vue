@@ -63,9 +63,10 @@ import router from '../router/index.mjs';
 
                     try {
                         await this.$store.dispatch('login', { email, username, password });
-                        router.push('Home');
+                        router.push('/');
                     }
-                    catch(err){
+                    catch (err) {
+                        console.log('somehow getting error');
                         alert(err);
                     }
                     
