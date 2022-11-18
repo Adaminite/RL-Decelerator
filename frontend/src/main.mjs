@@ -29,8 +29,7 @@ const store = createStore({
         logout(state){
             state.commit('logout');
         },
-        async login(state, user) {
-            console.log(user);
+        async register(state, user) {
 
             const res = await axios.post('/api/users/register', user);
 
@@ -41,8 +40,17 @@ const store = createStore({
             }
             
             state.commit('login', res.data);
+        },
+        async login(state, user) {
+            const res = await axios.post('/api/users/login', user);
+
+            if (res.error) {
+                throw res.error;
+            }
             
+            state.commit('login', res.data);
         }
+        
     }
 
 });

@@ -14,14 +14,11 @@
 
             <div>
                 <label for="password"> Password: </label>
-                <input id="pass" type="password" name="password"/>
-                <input type="checkbox" @click.stop="showPassword($event)">Show Password
-            </div>
+                <input id="pass" type="password" name="password" required/>
 
-            <div>
-                <label>
-
-                </label>
+                
+                <input type="checkbox" @click.stop="showPassword($event)"/>
+                <label for="show"> Show Password </label>
             </div>
 
             <div>
@@ -37,9 +34,6 @@
 import router from '../router/index.mjs';
 
     export default{
-        data(){
-            
-        },
         methods: {
             showPassword(event) {
                 const pass = document.getElementById('pass');
@@ -50,26 +44,20 @@ import router from '../router/index.mjs';
                     pass.setAttribute('type', 'password');
                 }
             },
+            async handleSubmit(event) {
+                const data = event.target.elements;
+                const email = data[0].value;
+                const username = data[1].value;
+                const password = data[2].value;
 
-                async handleSubmit(event) {
-                    const data = event.target.elements;
-                    const email = data[0].value;
-                    const username = data[1].value;
-                    const password = data[2].value;
-
-                    console.log({ email, username, password });
-
-                    try {
-                        await this.$store.dispatch('login', { email, username, password });
-                        router.push('/');
-                    }
-                    catch (err) {
-                        console.log('somehow getting error');
-                        alert(err);
-                    }
-                    
-                    
+                try {
+                    await this.$store.dispatch('register', { email, username, password });
+                    router.push('/');
+                }
+                catch (err) {
+                    alert(err);
                 }
             }
+        }
     }
 </script>

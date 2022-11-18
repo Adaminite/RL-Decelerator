@@ -20,8 +20,6 @@ router.post('/register', async (req, res) => {
             throw 'Email already used';
         }
 
-        console.log('reached');
-
         const hash = await bcrypt.hash(data.password, 10);
 
         const newUser = new User({
@@ -31,17 +29,41 @@ router.post('/register', async (req, res) => {
         });
 
         const saved = await newUser.save();
-        console.log(saved);
-        const token = await jwt.sign({ username: newUser.username, email: newUser.email }, process.env.SECRET_KEY,
+        const token = jwt.sign({ username: newUser.username, email: newUser.email }, process.env.SECRET_KEY,
         {expiresIn: '3600', algorithm: 'HS256'}); // add token stuff here
-        
-        console.log(token);
 
         res.send({username: saved.username, token});
     } 
     catch (err) {
         console.log(err);
         res.send({error: err});
+    }
+});
+
+router.post('/login', async (req, res) => {
+    try {
+        const data = req.body;
+
+        const username = data.username;
+
+        const foundUser = await User.findOne({ username: username });
+        if (!foundUser) {
+            throw 'Invalid credentials';
+        }
+        const password = data.password;
+        const res = await bcrypt.compare(password, foundUser.password);
+
+        if (res) {
+            const token = jwt.sign({ username: foundUser.username, email: foundUser.email }, process.env.SECRET_KEY,
+                { expiresIn: '3600', algorithm: 'HS256' }); 
+            res.send({ username: foundUser.username, token });
+        }
+        else {
+            throw 'Invalid credentials';
+        }
+    }
+    catch (err) {
+        res.send({ error: err });
     }
 });
 
