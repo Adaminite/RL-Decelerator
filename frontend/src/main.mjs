@@ -23,6 +23,8 @@ const store = createStore({
         login(state, payload) {
             state.username = payload.username;
             state.token = payload.token;
+            window.localStorage.setItem('username', payload.username);
+            window.localStorage.setItem('token', payload.token);
         }
     },
     actions:{
@@ -33,9 +35,7 @@ const store = createStore({
 
             const res = await axios.post('/api/users/register', user);
 
-            console.log(res);
-
-            if (res.error) {
+            if (res.data.error) {
                 throw res.error;
             }
             
@@ -44,8 +44,11 @@ const store = createStore({
         async login(state, user) {
             const res = await axios.post('/api/users/login', user);
 
-            if (res.error) {
-                throw res.error;
+            console.log(res);
+            console.log(res.data.error);
+
+            if (res.data.error) {
+                throw res.data.error;
             }
             
             state.commit('login', res.data);

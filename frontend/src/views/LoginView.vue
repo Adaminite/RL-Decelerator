@@ -24,6 +24,9 @@
 
 
 <script>
+
+import router from '../router/index.mjs';
+    
     export default{
         methods: {
             showPassword(event) {
