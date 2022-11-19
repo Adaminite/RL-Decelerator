@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 
 import UserRouter from './backend/routers/users.mjs';
 import BoosterRouter from './backend/routers/boosters.mjs';
-import ReviewRouter from './backend/routers/reviews';
+import ReviewRouter from './backend/routers/reviews.mjs';
 
 dotenv.config();
 

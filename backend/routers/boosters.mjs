@@ -48,7 +48,7 @@ router.get('/find', async (req, res) => {
     const query = req.query;
     const slug = query.slug;
     try {
-        const result = await Booster.find({ slug });
+        const result = await Booster.findOne({ slug });
         res.send(result);
     }
     catch (err) {
