@@ -36,17 +36,14 @@ const store = createStore({
             const res = await axios.post('/api/users/register', user);
 
             if (res.data.error) {
-                throw res.error;
+                throw res.data.error;
             }
             
             state.commit('login', res.data);
         },
         async login(state, user) {
             const res = await axios.post('/api/users/login', user);
-
-            console.log(res);
-            console.log(res.data.error);
-
+            
             if (res.data.error) {
                 throw res.data.error;
             }
