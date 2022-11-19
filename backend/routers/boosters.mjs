@@ -24,6 +24,10 @@ router.post('/add', upload.single('image'), async (req, res) => {
         const email = data.email;
         const reviews = [];
 
+        const foundBooster = await Booster.findOne({ email: email });
+        if (foundBooster) {
+            throw 'This account is already registered as a booster!';
+        }
         const newBooster = new Booster({
             name, rate, creationDate, email, reviews
         });

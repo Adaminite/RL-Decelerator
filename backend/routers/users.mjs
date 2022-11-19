@@ -67,5 +67,24 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.post('/get', async (req, res) => {
+    
+    const data = req.body;
+    const username = data.username;
+    try {
+        const foundUser = await User.findOne({ username: username });
+
+        if (!foundUser) {
+            throw 'User not found';
+        } 
+        
+        res.send({ email: foundUser.email, username: username, joinDate: foundUser.createdOn });
+    }
+    catch (err) {
+        res.send({ error: err });
+    }
+
+
+});
 
 export default router;
