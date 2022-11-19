@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 
 import UserRouter from './backend/routers/users.mjs';
 import BoosterRouter from './backend/routers/boosters.mjs';
+import ReviewRouter from './backend/routers/reviews';
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/users', UserRouter);
 app.use('/api/boosters', BoosterRouter);
+app.use('/api/reviews', ReviewRouter);
 
 app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
