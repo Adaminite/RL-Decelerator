@@ -57,4 +57,27 @@ router.get('/find', async (req, res) => {
     
 });
 
+router.get('/findAll', async (req, res) => {
+    let data;
+    try {
+        data = await Booster.find({});
+    }
+    catch (err) {
+        console.log(err);
+        res.send({ error: err });
+    }
+    
+    
+    const boosters = data.map((booster) => {
+        return {
+            name: booster.name,
+            email: booster.email,
+            rate: booster.rate,
+            id: booster.slug
+        };
+    });
+
+    res.send({ boosters });
+});
+
 export default router;

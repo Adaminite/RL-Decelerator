@@ -2,7 +2,7 @@
     <div class="navbar">
         <ul class="navUl leftItems">
             <router-link class="navLink" to="/" tag="li">Home</router-link>
-            <router-link class="navLink" to="/booster" tag="li">Boosters</router-link>
+            <router-link class="navLink" to="/boosters" tag="li">Boosters</router-link>
         </ul>
 
         <ul v-if="isSignedIn" class="navUl rightItems">

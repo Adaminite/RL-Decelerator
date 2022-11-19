@@ -21,7 +21,7 @@ export default{
             booster: null,
             notFound: false
         };
-        },
+    },
     
     async created() {
         const slug = this.$route.params.id;
