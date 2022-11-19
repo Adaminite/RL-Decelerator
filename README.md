@@ -81,3 +81,5 @@ An Example Deranker with Review Subdoc (exact structure TBD):
 ## [Link to Initial Main Project File](app.mjs)
 
 ## Annotations / References Used
+
+1. Favicon: https://www.icons101.com/icon/id_83992/setid_3058/Hex_Icons_by_canowyrms/rocketleague

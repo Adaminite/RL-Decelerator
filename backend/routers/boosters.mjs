@@ -48,13 +48,23 @@ router.get('/find', async (req, res) => {
     const query = req.query;
     const slug = query.slug;
     try {
-        const result = await Booster.findOne({ slug });
+        /*
+        Booster.findOne({ slug }).populate('reviews').exec((err, result) => {
+            if (err) {
+                res.send({ error: err });
+            }
+            else {
+                console.log(result);
+                res.send(result);
+            }
+        });
+        */
+        const result = await Booster.findOne({ slug }).populate('reviews').exec();
         res.send(result);
     }
     catch (err) {
         res.send({ error: err });
     }
-    
 });
 
 router.get('/findAll', async (req, res) => {
@@ -66,7 +76,6 @@ router.get('/findAll', async (req, res) => {
         console.log(err);
         res.send({ error: err });
     }
-    
     
     const boosters = data.map((booster) => {
         return {

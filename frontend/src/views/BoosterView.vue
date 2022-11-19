@@ -7,25 +7,52 @@
         <div>
             <h2>Add Review</h2>
             <div v-if="isSignedIn">
-                <form>
-
+                <form @submit.prevent="handleSubmit($event)">
                     <fieldset>
-
+                        <div>
+                            <input type="radio" value="1" name="rating"/>
+                            <label>1</label> 
+                        </div>
+                        <div>
+                            <input type="radio" value="2" name="rating" />
+                            <label>2</label>
+                        </div>
+                        <div>
+                            <input type="radio" value="3" name="rating" />
+                            <label>3</label>
+                        </div>
+                        <div>
+                            <input type="radio" value="4" name="rating" />
+                            <label>4</label>
+                        </div>
+                        <div>
+                            <input type="radio" value="5" name="rating" />
+                            <label>5</label>
+                        </div>
                     </fieldset>
 
                     <div>
-                        <textarea style="resize: none;" v-bind:value="reviewContent" maxlength="500"></textarea>
-                        <span>{{length}} characters remaining</span>
+                        <textarea style="resize: none;" v-bind:value="reviewContent" maxlength="500" @change="handleChange($event)"></textarea>
+                        <span>{{remaining}} characters remaining</span>
                     </div>
 
                     <div>
-                        <input @click.prevent="handleSubmit($event)">Add Review</input>
+                        <input type="submit" value="Add Review"/>
                     </div>
                 </form>
             </div>
 
             <div v-else>
                 <h3> You must be signed in in order to write a review </h3>
+            </div>
+
+            <h2>Reviews</h2> 
+            <div v-for="review in booster.reviews">
+                <div v-if="review">
+                    <p> User: {{review.username}} </p>
+                    <p> Rating: {{review.rating}}/5</p>
+                    <p> {{review.content}}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -41,6 +68,7 @@ export default{
             booster: null,
             hasData: false,
             reviewContent: "",
+            remaining: 500
         };
     },
     async created() {
@@ -74,13 +102,24 @@ export default{
         isSignedIn() {
             return this.$store.state.username;
         },
-        length() {
-            return 500 - this.reviewContent.length;
-        }
     },
     methods: {
-        handleSubmit(event) {
-            
+        async handleSubmit(event) {
+            const elements = event.target.elements;
+            const rating = Number(elements.rating.value);
+            console.log(rating);
+            try {
+                await axios.post('/api/reviews/add', { slug: this.$route.params.id, rating, content: this.reviewContent, username: this.$store.state.username });
+                this.$router.go();
+            }
+            catch (err) {
+                alert(err);
+            }
+        },
+        handleChange(event) {
+            console.log(event.target.value);
+            this.reviewContent = event.target.value;
+            this.remaining = 500 - this.reviewContent.length;
         }
     }
 }

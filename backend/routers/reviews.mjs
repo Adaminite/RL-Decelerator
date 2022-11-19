@@ -1,5 +1,5 @@
 import express from 'express';
-import User from '../models/User.model.mjs';
+import Booster from '../models/Booster.model.mjs';
 import Review from '../models/Review.model.mjs';
 
 const router = express.Router();
@@ -8,8 +8,10 @@ router.post('/add', async (req, res) => {
     try {
         const data = req.body;
         
-        const foundUser = await User.findOne({ username: data.username });
-        if (!foundUser) {
+        console.log(data);
+
+        const foundBooster = await Booster.findOne({ slug: data.slug });
+        if (!foundBooster) {
             throw 'Invalid user';
         }
 
@@ -20,8 +22,10 @@ router.post('/add', async (req, res) => {
         });
         const savedReview = await newReview.save();
 
-        foundUser.reviews.push(savedReview._id);
-        await foundUser.save();
+        console.log(foundBooster);
+    
+        foundBooster.reviews.push(savedReview._id);
+        await foundBooster.save();
 
         res.send({ data });
     }

@@ -6,7 +6,6 @@
             <p> {{ booster.rate }}</p>
             <a v-bind:href="'/boosters/' + booster.id"> Reviews </a>
         </div>
-
     </div>
 </template>
 

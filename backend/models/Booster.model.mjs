@@ -9,7 +9,7 @@ const boosterSchema = new Schema({
     img: { data: Buffer, contentType: String},
     email: { type: String, unique: true, require: true },
     rate: { type: Number, minimum: 1, require: true },
-    reviews: [{ type: [Schema.Types.ObjectId], ref: 'Review' }],
+    reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
     creationDate: { type: Date, required: true }
 });
 
