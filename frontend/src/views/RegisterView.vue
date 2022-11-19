@@ -33,31 +33,31 @@
 
 import router from '../router/index.mjs';
 
-    export default{
-        methods: {
-            showPassword(event) {
-                const pass = document.getElementById('pass');
-                if (pass.getAttribute('type') === 'password') {
-                    pass.setAttribute('type', 'text');
-                }
-                else {
-                    pass.setAttribute('type', 'password');
-                }
-            },
-            async handleSubmit(event) {
-                const data = event.target.elements;
-                const email = data[0].value;
-                const username = data[1].value;
-                const password = data[2].value;
+export default{
+    methods: {
+        showPassword(event) {
+            const pass = document.getElementById('pass');
+            if (pass.getAttribute('type') === 'password') {
+                pass.setAttribute('type', 'text');
+            }
+            else {
+                pass.setAttribute('type', 'password');
+            }
+        },
+        async handleSubmit(event) {
+            const data = event.target.elements;
+            const email = data[0].value;
+            const username = data[1].value;
+            const password = data[2].value;
 
-                try {
-                    await this.$store.dispatch('register', { email, username, password });
-                    router.push('/');
-                }
-                catch (err) {
-                    alert(err);
-                }
+            try {
+                await this.$store.dispatch('register', { email, username, password });
+                router.push('/');
+            }
+            catch (err) {
+                alert(err);
             }
         }
     }
+}
 </script>
