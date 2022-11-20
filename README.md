@@ -83,3 +83,7 @@ An Example Deranker with Review Subdoc (exact structure TBD):
 ## Annotations / References Used
 
 1. Favicon: https://www.icons101.com/icon/id_83992/setid_3058/Hex_Icons_by_canowyrms/rocketleague
+
+2. Home Page Background: https://wall.alphacoders.com/big.php?i=885543
+
+3.

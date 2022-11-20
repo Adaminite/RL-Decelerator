@@ -8,8 +8,6 @@ router.post('/add', async (req, res) => {
     try {
         const data = req.body;
         
-        console.log(data);
-
         const foundBooster = await Booster.findOne({ slug: data.slug });
         if (!foundBooster) {
             throw 'Invalid user';
@@ -21,8 +19,6 @@ router.post('/add', async (req, res) => {
             content: data.content
         });
         const savedReview = await newReview.save();
-
-        console.log(foundBooster);
     
         foundBooster.reviews.push(savedReview._id);
         await foundBooster.save();
