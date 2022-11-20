@@ -69,7 +69,7 @@ html, body{
     align-items: center;
 }
 
-#profile{
+#profile, #booster{
     padding: 5px;
 }
 .auth-container{
