@@ -1,11 +1,17 @@
 <template>
-    <div v-for="booster in boosters">
-        <div>
-            <h2>{{ fullName(booster.name) }}</h2>
-            <p> {{ booster.email }}</p>
-            <p> {{ booster.rate }}</p>
-            <a v-bind:href="'/boosters/' + booster.id"> Reviews </a>
+    <h1 class="page-header">Boosters</h1>
+    <div class="row" v-for="booster in boosters">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title"> <strong>{{ fullName(booster.name) }}</strong></p>
+                    <p class="card-text"> {{ booster.email }}</p>
+                    <p class="card-text"><em>${{ booster.rate }}/session</em></p>
+                    <a class="card-link" v-bind:href="'/boosters/' + booster.id"> Reviews </a>
+                </div>
+            </div>
         </div>
+
     </div>
 </template>
 
