@@ -1,31 +1,29 @@
 <template>
-    <div>
-        <h1> Register </h1>
-        <form id="registerForm" @submit.prevent="handleSubmit($event)">
-            <div>
-                <label for="email"> Email Address: </label>
-                <input type="email" name="email" required/>
-            </div>
-
-            <div>
-                <label for="username"> Username: </label>
-                <input type="text" name="username"/>
-            </div>
-
-            <div>
-                <label for="password"> Password: </label>
-                <input id="pass" type="password" name="password" required/>
-
-                
-                <input type="checkbox" @click.stop="showPassword($event)"/>
-                <label for="show"> Show Password </label>
-            </div>
-
-            <div>
-                <input type="submit" value = "Register"/>
-            </div>
-
-        </form>
+    <div id="register">
+        <h1 class="page-header"> Register </h1>
+        <div class="auth-container">
+            <form style="width: 300px;" id="registerForm" @submit.prevent="handleSubmit($event)">
+                <div class="form-group">
+                    <label for="email"> Email Address: </label>
+                    <input class="form-control" type="email" name="email" required />
+                </div>
+                <div class="form-group">
+                    <label for="username"> Username: </label>
+                    <input class="form-control" type="text" name="username" />
+                </div>
+                <div class="form-group">
+                    <label for="password"> Password: </label>
+                    <input class="form-control" id="pass" type="password" name="password" required />
+                </div>
+                <div class="form-group form-check">
+                    <input class="form-check-input" type="checkbox" @click.stop="showPassword($event)" />
+                    <label class="form-check-label" for="show"> Show Password </label>
+                </div>
+                <div class="form-group submit-container">
+                    <input class="btn btn-primary" type="submit" value="Register" />
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 

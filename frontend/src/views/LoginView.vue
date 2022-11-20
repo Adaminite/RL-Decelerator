@@ -1,24 +1,26 @@
 
 <!-- https://stackoverflow.com/questions/48969495/in-javascript-how-do-i-should-i-use-async-await-with-xmlhttprequest -->
 <template>
-    <div>
-        <h1> Login </h1> 
-        <form id="loginForm" @submit.prevent="handleSubmit($event)">
-            <div>
-                <label for="username"> Username: </label>
-                <input type="text" name="username" required/>
-            </div>
+    <div id="login">
+        <h1 class="page-header"> Login </h1>
+        <div class="auth-container">
+            <form id="loginForm" style="width: 300px;" @submit.prevent="handleSubmit($event)">
+                <div class="form-group">
+                    <label for="username"> Username: </label>
+                    <input class="form-control" type="text" name="username" required/>
+                </div>
 
-            <div>
-                <label for="password"> Password: </label>
-                <input id="pass" type="password" name="password" required/>
-            </div>
+                <div class="form-group">
+                    <label for="password"> Password: </label>
+                    <input class="form-control" id="pass" type="password" name="password" required/>
+                </div>
 
-            <div>
-                <input type="submit" value="Log In"/>
-            </div>
+                <div class="form-group submit-container">
+                    <input type="submit" class="btn btn-primary" value="Log In"/>
+                </div>
 
-        </form>
+            </form>
+        </div>
     </div>
 </template>
 
