@@ -1,7 +1,7 @@
 <template>
     <h1 class="page-header">Boosters</h1>
-    <div class="row" v-for="booster in boosters">
-        <div class="col-sm">
+    <div class="row">
+        <div v-for="booster in boosters" class="col-sm">
             <div class="card">
                 <div class="card-body">
                     <p class="card-title"> <strong>{{ fullName(booster.name) }}</strong></p>
