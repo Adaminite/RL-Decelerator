@@ -9,22 +9,22 @@ import './assets/main.css';
 const store = createStore({
     state(){
         return {
-            username: window.localStorage.getItem('username') || '',
-            token: window.localStorage.getItem('token') || '',
+            username: window.sessionStorage.getItem('username') || '',
+            token: window.sessionStorage.getItem('token') || '',
         };
     },
     mutations:{
         logout(state){
             state.username = '';
             state.token = '';
-            window.localStorage.removeItem('token');
-            window.localStorage.removeItem('username');
+            window.sessionStorage.removeItem('token');
+            window.sessionStorage.removeItem('username');
         },
         login(state, payload) {
             state.username = payload.username;
             state.token = payload.token;
-            window.localStorage.setItem('username', payload.username);
-            window.localStorage.setItem('token', payload.token);
+            window.sessionStorage.setItem('username', payload.username);
+            window.sessionStorage.setItem('token', payload.token);
         }
     },
     actions:{

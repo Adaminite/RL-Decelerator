@@ -74,7 +74,7 @@ An Example Deranker with Review Subdoc (exact structure TBD):
 - (1 point) External API Use/Client Side Library (Time permitted)
   - I will be using Stripe or Paypal JS libraries or REST APIs to make payment orders
 - (6 points) Front-end framework
-  - Will use Vue.js as a front-end framework; I only have React experience, so this will be something new
+  - Will use Vue.js as a front-end framework; I only have React experience, so this will be something entirely new
 
 10 points total out of 8 required points (**\_TODO**: addtional points will **not** count for extra credit)
 
