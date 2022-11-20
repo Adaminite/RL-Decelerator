@@ -31,7 +31,13 @@
 
 import router from '../router/index.mjs';
 
-export default{
+export default {
+    created() {
+        if (this.$store.state.username) {
+            alert('Error: already signed in');
+            router.push('/');
+        }
+    },
     methods: {
         showPassword(event) {
             const pass = document.getElementById('pass');
