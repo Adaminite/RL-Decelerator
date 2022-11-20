@@ -4,14 +4,13 @@ import path from 'path';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
-
 import UserRouter from './backend/routers/users.mjs';
 import BoosterRouter from './backend/routers/boosters.mjs';
 import ReviewRouter from './backend/routers/reviews.mjs';
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/AIT-final-proj', {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

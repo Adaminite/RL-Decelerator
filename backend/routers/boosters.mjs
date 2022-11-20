@@ -16,7 +16,6 @@ const upload = multer({ storage: storage });
 
 router.post('/add', upload.single('image'), async (req, res) => {
     try {
-
         const data = req.body;
         const name = data.name;
         const rate = data.rate;
@@ -35,8 +34,6 @@ router.post('/add', upload.single('image'), async (req, res) => {
         const saved = await newBooster.save();
 
         res.send(saved);
-
-
     }
     catch(err){
         console.log(err);
@@ -48,17 +45,6 @@ router.get('/find', async (req, res) => {
     const query = req.query;
     const slug = query.slug;
     try {
-        /*
-        Booster.findOne({ slug }).populate('reviews').exec((err, result) => {
-            if (err) {
-                res.send({ error: err });
-            }
-            else {
-                console.log(result);
-                res.send(result);
-            }
-        });
-        */
         const result = await Booster.findOne({ slug }).populate('reviews').exec();
         res.send(result);
     }

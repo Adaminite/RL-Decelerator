@@ -24,7 +24,6 @@ export default {
             boosters: []
         };
     },
-
     async created() {
         try {
             const res = await axios.get('/api/boosters/findAll');
@@ -47,7 +46,7 @@ export default {
                 const [fName, lName] = parts;
 
                 return fName.charAt(0).toUpperCase() + fName.substring(1) + " " + lName.charAt(0).toUpperCase() + lName.substring(1);
-            }
+            };
 
             return capitalizeName;
         }

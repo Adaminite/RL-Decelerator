@@ -1,9 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 import mongooseSlugPlugin from "mongoose-slug-plugin";
+
 /*
     Represents a booster for the website; stores their information
 */
-
 const boosterSchema = new Schema({
     name: { type: String, unique: true, require: true },
     img: { data: Buffer, contentType: String},

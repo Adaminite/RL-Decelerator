@@ -113,7 +113,6 @@ export default{
         async handleSubmit(event) {
             const elements = event.target.elements;
             const rating = Number(elements.rating.value);
-            console.log(rating);
             try {
                 await axios.post('/api/reviews/add', { slug: this.$route.params.id, rating, content: this.reviewContent, username: this.$store.state.username });
                 this.$router.go();

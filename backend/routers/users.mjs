@@ -83,8 +83,6 @@ router.post('/get', async (req, res) => {
     catch (err) {
         res.send({ error: err });
     }
-
-
 });
 
 export default router;
