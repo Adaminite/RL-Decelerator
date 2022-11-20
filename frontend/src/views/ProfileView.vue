@@ -1,6 +1,6 @@
 <template>
 
-    <div v-if="hasData">
+    <div id="profile" v-if="hasData">
         <h1>Profile</h1>
         <p> Username: {{ profileInfo.username}}</p>
         <p> Email: {{profileInfo.email}}</p>
@@ -8,23 +8,22 @@
 
         <h2>Want to Register as a Booster?</h2>
         <form @submit.prevent="handleSubmit($event)">
-            <div>
+            <div class="form-group">
                 <label for="fname"> First Name: </label>
-                <input type="text" name="fname" required />
+                <input class="form-control" type="text" name="fname" required />
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="lname"> Last Name: </label>
-                <input type="text" name="lname" required />
+                <input class="form-control" type="text" name="lname" required />
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="rate"> Rate: </label>
-                <input type="number" name="rate" min="5" max="30" required />
+                <input class="form-control" type="number" name="rate" min="5" max="30" required />
             </div>
-
-            <div>
-                <input type="submit" value="Submit" />
+            <div class="form-group" >
+                <input class="btn btn-primary" style="margin-top: 8px;" type="submit" value="Submit" />
             </div>
         </form>
     </div>
